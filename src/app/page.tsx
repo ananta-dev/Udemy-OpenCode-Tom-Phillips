@@ -1,69 +1,164 @@
-import Image from "next/image";
+import Link from "next/link";
+import {
+  ArrowRight,
+  Calculator,
+  CalendarDays,
+  ChartLine,
+  Coins,
+  DollarSign,
+  Percent,
+  RefreshCw,
+  TrendingUp,
+} from "lucide-react";
+
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+const features = [
+  {
+    title: "Mortgage Repayments",
+    description:
+      "Calculate your monthly mortgage payments, compare different loan terms, and see how interest rates affect your repayments.",
+    icon: DollarSign,
+    href: "/mortgage-repayments-calculator",
+    benefits: [
+      { icon: CalendarDays, text: "Monthly & total repayment estimates" },
+      { icon: Percent, text: "Adjustable interest rates & loan terms" },
+      { icon: ChartLine, text: "Full amortisation schedule breakdown" },
+    ],
+  },
+  {
+    title: "Compound Interest",
+    description:
+      "See how your investments grow over time with compound interest. Project savings, compare frequencies, and plan your financial future.",
+    icon: TrendingUp,
+    href: "/compound-interest-calculator",
+    benefits: [
+      { icon: RefreshCw, text: "Annual, monthly & daily compounding" },
+      { icon: Coins, text: "Initial & recurring contribution support" },
+      { icon: ChartLine, text: "Year-by-year growth projections" },
+    ],
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <div className="flex flex-1 flex-col">
+      <header className="sticky top-0 z-20 border-b bg-background">
+        <div className="mx-auto flex h-14 w-full max-w-4xl items-center justify-between px-6">
+          <Link href="/" className="flex items-center gap-2 font-medium">
+            <span className="flex size-7 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+              <Calculator className="size-4" />
+            </span>
+            FinCalc
+          </Link>
+          <nav className="flex items-center gap-1">
+            <Button
+              variant="ghost"
+              size="sm"
+              render={<Link href="/mortgage-repayments-calculator" />}
+              nativeButton={false}
+            >
+              Mortgage
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              render={<Link href="/compound-interest-calculator" />}
+              nativeButton={false}
+            >
+              Compound Interest
+            </Button>
+          </nav>
+        </div>
+      </header>
+
+      <main className="flex flex-1 flex-col">
+        <section className="flex flex-col items-center px-6 py-20 text-center sm:py-28">
+          <Badge variant="secondary" className="mb-6">
+            <Calculator data-icon="inline-start" />
+            Smart financial tools at your fingertips
+          </Badge>
+          <h1 className="max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
+            Make sense of your money
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mt-4 max-w-xl text-lg text-muted-foreground">
+            Quick, accurate calculators for mortgages and compound interest —
+            no spreadsheets required.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button
+              size="lg"
+              render={<Link href="/mortgage-repayments-calculator" />}
+              nativeButton={false}
+            >
+              Mortgage Calculator
+              <ArrowRight data-icon="inline-end" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              render={<Link href="/compound-interest-calculator" />}
+              nativeButton={false}
+            >
+              Compound Interest
+              <ArrowRight data-icon="inline-end" />
+            </Button>
+          </div>
+        </section>
+
+        <section className="mx-auto grid w-full max-w-4xl gap-6 px-6 pb-20 sm:pb-24 md:grid-cols-2">
+          {features.map((feature) => (
+            <Card key={feature.title} className="flex flex-col">
+              <CardHeader>
+                <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <feature.icon className="size-5" />
+                </div>
+                <CardTitle>{feature.title}</CardTitle>
+                <CardDescription>{feature.description}</CardDescription>
+              </CardHeader>
+              <CardContent className="flex-1">
+                <ul className="flex flex-col gap-2.5">
+                  {feature.benefits.map((benefit) => (
+                    <li
+                      key={benefit.text}
+                      className="flex items-center gap-2 text-sm text-muted-foreground"
+                    >
+                      <benefit.icon className="size-4 shrink-0 text-primary" />
+                      {benefit.text}
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+              <CardFooter>
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  render={<Link href={feature.href} />}
+                  nativeButton={false}
+                >
+                  Open {feature.title}
+                  <ArrowRight data-icon="inline-end" />
+                </Button>
+              </CardFooter>
+            </Card>
+          ))}
+        </section>
       </main>
+
+      <footer className="border-t py-6">
+        <div className="mx-auto flex w-full max-w-4xl items-center justify-between px-6 text-sm text-muted-foreground">
+          <p>FinCalc — free calculators for smarter financial decisions.</p>
+        </div>
+      </footer>
     </div>
   );
 }
