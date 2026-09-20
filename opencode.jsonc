@@ -1,6 +1,17 @@
 {
-    "$schema": "https://opencode.ai/config.json",
-    "formatter": true,
-    "instructions": [],
-    // "instructions": [".agents/rules/*.md"], // No! We do not want to import all the rules!
+  "$schema": "https://opencode.ai/config.json",
+  "formatter": true,
+  "instructions": [],
+  // "instructions": [".agents/rules/*.md"], // No! We do not want to import all the rules!
+  "mcp": {
+    "tradingview": {
+      "type": "local",
+      "command": [
+        "node",
+        "C:/code/Claude-Code-Tradingview/tradingview-mcp/src/server.js",
+      ],
+      "enabled": true,
+      "environment": {},
+    },
+  },
 }
